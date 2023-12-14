@@ -1,40 +1,39 @@
 <html>
 <head>
-<title>View All</title>
+<title></title>
+<style>
 <style>
 body
 {
-	background-image:url('library2.jpg');
-	background-repeat:no-repeat;
-	background-position:center;
-	background-size:cover;
-	color:Gold;
+background-image:url("lib3.jpg");
+background-repeat:no-repeat;
+background-position:center;
+background-size:cover;
 }
+
 </style>
 </head>
 <body>
-<big>
 <?php
-require('connect.php');
+require('connect1.php');
 $sql="select * from library";
 $result=mysqli_query($conn,$sql);
 if(mysqli_num_rows($result)>0)
 {
-	while($row=mysqli_fetch_assoc($result))
-	{
-		echo "Book Name:".$row['Book_name']."<br>";
-		echo "Author:".$row['Author']."<br>";
-		echo "Publisher:".$row['Publisher']."<br>";
-		echo "Quantity:".$row['Quantity']."<br>";
-		echo "Prize:".$row['Prize']."<br><br>";
-	}
+while($row=mysqli_fetch_assoc($result))
+{
+echo "Book Name:".$row["Book_name"]."<br>";
+echo "Author:".$row["Author"]."<br>";
+echo "Publisher:".$row["Publisher"]."<br>";
+echo "Quantity:".$row["Quantity"]."<br>";
+echo "Price:".$row["Price"]."<br><br>";
+}
 }
 else
 {
-	echo "No Results";
+echo "Failed";
 }
 mysqli_close($conn);
 ?>
-</big>
 </body>
 </html>

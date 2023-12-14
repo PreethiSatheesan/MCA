@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title>search</title>
+<title>delete</title>
 </head>
 <body>
 <?php
@@ -9,22 +9,15 @@ require('connect1.php');
 if(isset($_POST['sub']))
 {
 $id=$_POST['txt1'];
-$sql="select * from library where Id=$id";
+$sql="delete from library where Id=$id";
 $result=mysqli_query($conn,$sql);
-if(mysqli_num_rows($result)>0)
+if($result)
 {
-while($row=mysqli_fetch_assoc($result))
-{
-echo "Book Name:".$row["Book_name"]."<br>";
-echo "Author:".$row["Author"]."<br>";
-echo "Publisher:".$row["Publisher"]."<br>";
-echo "Quantity:".$row["Quantity"]."<br>";
-echo "Price:".$row["Price"]."<br><br>";
-}
+echo "one record successfully deleted";
 }
 else
 {
-echo "Failed";
+echo "failed";
 }
 mysqli_close($conn);
 }
